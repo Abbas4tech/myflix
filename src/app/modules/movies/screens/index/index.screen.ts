@@ -11,7 +11,7 @@ export class MoviesIndexScreen {
   movies!: BaseMovieCard[];
   constructor(private movie: MovieService) {
     this.movie.getMovies().subscribe({
-      next: ({ Search }) => {
+      next: (Search) => {
         this.movies = Search;
       },
       error: (err) => console.error(err),

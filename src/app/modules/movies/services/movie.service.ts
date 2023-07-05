@@ -1,16 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIResponse, BaseMovieCard } from '../model/movies.model';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'platform',
 })
 export class MovieService {
   constructor(private _http: HttpClient) {}
+  ApiKey = '8c6211cc';
 
-  getMovies(): Observable<APIResponse<BaseMovieCard>> {
-    return this._http.get<APIResponse<BaseMovieCard>>(
-      'https://www.omdbapi.com/?apikey=8c6211cc&s=dragon&page=1'
-    );
+  shuffleMoviesKeywords = () => {
+    return [
+      'breaking',
+      'bad',
+      'good',
+      'slow',
+      'love',
+      'sex',
+      'drug',
+      'hate',
+      'hotel',
+      'kiss',
+      'money',
+    ]
+      .map((e) => ({ e, _sortKey: Math.random() }))
+      .sort((a, b) => a._sortKey - b._sortKey)
+      .map(({ e }) => e)[0];
+  };
+  randomNumberGenerator = () => {
+    return Math.round(Math.random() * 100);
+  };
+  getMovies(): Observable<BaseMovieCard[]> {
+    return this._http
+      .get<APIResponse<BaseMovieCard>>(
+        `https://www.omdbapi.com/?apikey=${this.ApiKey}&s=fast&page=1`
+      )
+      .pipe(map(({ Search }) => Search));
   }
 }
