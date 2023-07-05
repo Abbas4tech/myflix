@@ -9,7 +9,16 @@
     @media (min-width: 768px) {
       padding: 1rem;
     }
-    color: var(--orange);
+    color: var(--text-white);
+    h3 {
+      color: var(--orange);
+    }
+    .medium-text:nth-of-type(1) {
+      margin-top: 0.5rem;
+      @media (min-width: 768px) {
+        margin: 0;
+      }
+    }
   }
   img {
     border-radius: 0.5rem;

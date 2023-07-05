@@ -33,7 +33,7 @@ export class MovieService {
   getMovies(): Observable<BaseMovieCard[]> {
     return this._http
       .get<APIResponse<BaseMovieCard>>(
-        `https://www.omdbapi.com/?apikey=${this.ApiKey}&s=fast&page=1`
+        `https://www.omdbapi.com/?apikey=${this.ApiKey}&s=dawn&page=1`
       )
       .pipe(map(({ Search }) => Search));
   }

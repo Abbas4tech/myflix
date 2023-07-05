@@ -1,8 +1,18 @@
 <wrapper>
   <section class="outer-box">
-    <img loading="lazy" [src]="movie.Poster" alt="" />
+    <img loading="lazy" [src]="movie.Poster" alt="movie-poster" />
     <article>
       <h3 class="heading">{{movie.Title}}</h3>
+      <p class="medium-text">Released on {{movie.Released}}</p>
+      <p class="medium-text">Genre : {{movie.Genre}}</p>
+      <p class="medium-text">Director : {{movie.Director}}</p>
+      <p class="medium-text">IMDB Votes : {{movie.imdbVotes}}</p>
+      <p class="medium-text">Ratings :</p>
+      <p class="medium-text">IMDB - {{movie.imdbRating}}</p>
+      <p class="medium-text">
+        {{movie.Ratings[1].Source}} - {{movie.Ratings[1].Value}}
+      </p>
+      <p class="medium-text" style="margin-top: 2rem">{{movie.Plot}}</p>
     </article>
   </section>
 </wrapper>

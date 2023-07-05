@@ -12,15 +12,30 @@
   --dark-black: #110f0f;
   --orange: #e50914;
   --text-white: #eeeeee;
+  --darkest-gray: #1c1a1a;
 }
 body {
-  background-color: var(--text-white);
+  background-color: var(--darkest-gray);
 }
 
 .heading {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 1044px) {
+    font-size: 3rem;
+  }
+}
+
+.medium-text {
+  font-size: 1rem;
+  font-weight: 500;
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1044px) {
+    font-size: 1.4rem;
   }
 }
