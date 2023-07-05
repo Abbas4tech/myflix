@@ -7,6 +7,7 @@ import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { WrapperComponent } from './components/wrapper/wrapper.component';
+import { LoaderComponent } from './components/laoder/loader.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { WrapperComponent } from './components/wrapper/wrapper.component';
     MovieDetailScreen,
     MovieCardComponent,
     WrapperComponent,
+    LoaderComponent,
   ],
   imports: [CommonModule, MoviesRoutingModule, HttpClientModule],
   exports: [],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { BaseMovieCard } from '../../model/movies.model';
+import { ResolveEnd, ResolveStart, Router } from '@angular/router';
 
 @Component({
   selector: 'movies-screen',
@@ -9,12 +10,22 @@ import { BaseMovieCard } from '../../model/movies.model';
 })
 export class MoviesIndexScreen {
   movies!: BaseMovieCard[];
-  constructor(private movie: MovieService) {
+  loading = true;
+  constructor(private movie: MovieService, private _router: Router) {
     this.movie.getMovies().subscribe({
       next: (Search) => {
         this.movies = Search;
+        this.loading = false;
       },
       error: (err) => console.error(err),
+    });
+    this._router.events.subscribe((e) => {
+      if (e instanceof ResolveStart) {
+        this.loading = true;
+      }
+      if (e instanceof ResolveEnd) {
+        this.loading = false;
+      }
     });
   }
 }
