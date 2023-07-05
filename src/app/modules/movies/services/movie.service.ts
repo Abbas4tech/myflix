@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { APIResponse, BaseMovieCard } from '../model/movies.model';
-import { Observable, map } from 'rxjs';
+import { APIResponse, BaseMovieCard, Movie } from '../model/movies.model';
+import { Observable, lastValueFrom, map } from 'rxjs';
 @Injectable({
   providedIn: 'platform',
 })
@@ -36,5 +36,13 @@ export class MovieService {
         `https://www.omdbapi.com/?apikey=${this.ApiKey}&s=fast&page=1`
       )
       .pipe(map(({ Search }) => Search));
+  }
+
+  async getMovieById(id: string) {
+    return await lastValueFrom(
+      this._http.get<Movie>(
+        `https://www.omdbapi.com/?apikey=${this.ApiKey}&i=${id}`
+      )
+    );
   }
 }

@@ -1,0 +1,15 @@
+.outer-box {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+  gap: 2rem;
+  article {
+    padding: 2rem;
+    color: var(--orange);
+  }
+  img {
+    border-radius: 0.5rem;
+  }
+}

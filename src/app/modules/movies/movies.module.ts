@@ -5,10 +5,16 @@ import { MoviesIndexScreen } from './screens/index/index.screen';
 import { MovieDetailScreen } from './screens/detailed/detail.screen';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieCardComponent } from './components/movie-card.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { WrapperComponent } from './components/wrapper/wrapper.component';
 
 @NgModule({
-  declarations: [MoviesIndexScreen, MovieDetailScreen, MovieCardComponent],
+  declarations: [
+    MoviesIndexScreen,
+    MovieDetailScreen,
+    MovieCardComponent,
+    WrapperComponent,
+  ],
   imports: [CommonModule, MoviesRoutingModule, HttpClientModule],
   exports: [],
   providers: [MovieService],

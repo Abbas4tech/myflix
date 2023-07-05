@@ -1,9 +1,6 @@
 .layout-container {
   color: var(--dark-black);
   display: grid;
-  max-width: 90rem;
-  width: 90%;
-  margin: 2rem auto;
   grid-template: 1fr / 1fr;
   gap: 2.5rem;
   @media (min-width: 768px) {
