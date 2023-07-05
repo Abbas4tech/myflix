@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'movies',
     loadChildren: () =>
-      import('./modules/Movies/movies.module').then((e) => e.MoviesModule),
+      import('./modules/movies/movies.module').then((e) => e.MoviesModule),
   },
   {
     path: '**',

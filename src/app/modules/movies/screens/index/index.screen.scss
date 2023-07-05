@@ -1,4 +1,18 @@
 section {
-  padding: 1rem;
-  color: var(--text-white);
+  color: var(--dark-black);
+  display: grid;
+  max-width: 90rem;
+  width: 90%;
+  margin: 2rem auto;
+  grid-template: 1fr / 1fr;
+  gap: 2.5rem;
+  @media (min-width: 768px) {
+    grid-template: repeat(2, 1fr) / repeat(2, 0.5fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template: repeat(3, 1fr) / repeat(3, 0.5fr);
+  }
+  @media (min-width: 1440px) {
+    grid-template: repeat(3, 1fr) / repeat(4, 0.5fr);
+  }
 }

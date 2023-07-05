@@ -1,3 +1,5 @@
 <section>
-  <p>Hello Boi</p>
+  <ng-container *ngFor="let mov of movies">
+    <movie-card [movie]="mov" />
+  </ng-container>
 </section>
