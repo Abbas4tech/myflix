@@ -1,8 +1,8 @@
 {
-  "name": "Mini Netlfix",
+  "name": "NetflixJr",
   "short_name": "A Mini Netlfix of Your Choice",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#110f0f",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
