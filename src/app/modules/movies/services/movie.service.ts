@@ -10,7 +10,7 @@ export class MovieService {
 
   getMovies(): Observable<APIResponse<BaseMovieCard>> {
     return this._http.get<APIResponse<BaseMovieCard>>(
-      'http://www.omdbapi.com/?apikey=8c6211cc&s=dragon&page=1'
+      'https://www.omdbapi.com/?apikey=8c6211cc&s=dragon&page=1'
     );
   }
 }
