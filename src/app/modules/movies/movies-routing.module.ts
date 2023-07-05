@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MoviesIndexScreen } from './screens/index/index.screen';
 import { MovieDetailScreen } from './screens/detailed/detail.screen';
 import { DetailedMovieResolver } from './resolver/detailed-movie.resolver';
+import { canActivateDetailedMovie } from './guards/detailed-movie.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
     resolve: {
       data: DetailedMovieResolver,
     },
+    canActivate: [canActivateDetailedMovie],
   },
 ];
 
