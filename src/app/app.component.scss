@@ -1,5 +1,10 @@
 header {
   height: 6rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   display: flex;
   align-items: center;
   background-color: var(--dark-black);

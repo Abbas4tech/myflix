@@ -13,6 +13,10 @@ import { Component } from '@angular/core';
         max-width: 80rem;
         width: 90%;
         margin: 2rem auto;
+        position: absolute;
+        top: 6rem;
+        left: 50%;
+        transform: translateX(-50%);
       }
     `,
   ],
