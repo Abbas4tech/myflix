@@ -1,12 +1,11 @@
 <ng-container *ngIf="loading else content">
   <loader />
 </ng-container>
-{{loading}}
 <ng-template #content>
   <wrapper>
     <section role="grid" class="layout-container">
-      <ng-container *ngFor="let mov of movies">
-        <movie-card [movie]="mov" />
+      <ng-container *ngFor="let movie of movies">
+        <movie-card [movie]="movie" />
       </ng-container>
     </section>
   </wrapper>

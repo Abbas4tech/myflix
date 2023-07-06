@@ -6,7 +6,7 @@ import {
   Movie,
   basicSearchKeywords,
 } from '../model/movies.model';
-import { BehaviorSubject, Observable, lastValueFrom, map, tap } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, map, tap } from 'rxjs';
 @Injectable({
   providedIn: 'platform',
 })
@@ -23,28 +23,38 @@ export class MovieService {
       .sort((a, b) => a._sortKey - b._sortKey)
       .map(({ e }) => e)[0];
 
-  getMovies(): Observable<BaseMovieCard[]> {
+  getMovies(): Promise<BaseMovieCard[]> {
     if (this.moviesData.getValue().length > 0) {
-      return this.moviesData.asObservable();
+      return new Promise((res, rej) => res(this.moviesData.getValue()));
     } else {
-      return this._http
-        .get<APIResponse<BaseMovieCard>>(
-          `https://www.omdbapi.com/?apikey=${
-            this.ApiKey
-          }&s=${this.shuffleMoviesKeywords()}&page=1&type=movie`
-        )
-        .pipe(
-          map(({ Search }) => Search),
-          tap((data) => this.moviesData.next(data))
+      try {
+        return lastValueFrom(
+          this._http
+            .get<APIResponse<BaseMovieCard>>(
+              `https://www.omdbapi.com/?apikey=${
+                this.ApiKey
+              }&s=${this.shuffleMoviesKeywords()}&page=1&type=movie`
+            )
+            .pipe(
+              map(({ Search }) => Search),
+              tap((data) => this.moviesData.next(data))
+            )
         );
+      } catch (err) {
+        throw new Error('Error in Fetching Movies!!');
+      }
     }
   }
 
-  async getMovieById(id: string) {
-    return await lastValueFrom(
-      this._http.get<Movie>(
-        `https://www.omdbapi.com/?apikey=${this.ApiKey}&i=${id}`
-      )
-    );
+  async getMovieById(id: string): Promise<Movie> {
+    try {
+      return await lastValueFrom(
+        this._http.get<Movie>(
+          `https://www.omdbapi.com/?apikey=${this.ApiKey}&i=${id}`
+        )
+      );
+    } catch (err) {
+      throw new Error('Error in fetching movie details!!');
+    }
   }
 }

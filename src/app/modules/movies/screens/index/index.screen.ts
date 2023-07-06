@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { BaseMovieCard } from '../../model/movies.model';
 import {
@@ -14,19 +14,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./index.screen.scss'],
   templateUrl: './index.screen.html',
 })
-export class MoviesIndexScreen implements OnDestroy {
+export class MoviesIndexScreen implements OnInit, OnDestroy {
   movies!: BaseMovieCard[];
   subscriptions: Subscription[] = [];
   loading = true;
   constructor(private movie: MovieService, private _router: Router) {
     this.subscriptions.push(
-      this.movie.getMovies().subscribe({
-        next: (Search) => {
-          this.movies = Search;
-          this.loading = false;
-        },
-        error: (err) => console.error(err),
-      }),
       this._router.events.subscribe((e) => {
         if (e instanceof NavigationStart || e instanceof ResolveStart) {
           this.loading = true;
@@ -36,6 +29,15 @@ export class MoviesIndexScreen implements OnDestroy {
         }
       })
     );
+  }
+  async ngOnInit(): Promise<void> {
+    this.loading = true;
+    try {
+      this.movies = await this.movie.getMovies();
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   ngOnDestroy(): void {
