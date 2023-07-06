@@ -1,3 +1,13 @@
-<section class="layer" (click)="moveToDetails(movie.imdbID)">
-  <img [src]="movie.Poster" alt="movie-poster" class="poster" />
+<section
+  class="layer"
+  role="gridcell"
+  tabindex="0"
+  (click)="moveToDetails(movie.imdbID)"
+>
+  <img
+    [src]="movie.Poster"
+    [alt]="movie.Title"
+    class="poster"
+    [ariaLabel]="movie.Title + ' Poster'"
+  />
 </section>

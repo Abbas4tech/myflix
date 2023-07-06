@@ -4,7 +4,7 @@
 {{loading}}
 <ng-template #content>
   <wrapper>
-    <section class="layout-container">
+    <section role="grid" class="layout-container">
       <ng-container *ngFor="let mov of movies">
         <movie-card [movie]="mov" />
       </ng-container>

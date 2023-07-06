@@ -1,18 +1,25 @@
 <wrapper>
-  <section class="outer-box">
-    <img loading="lazy" [src]="movie.Poster" alt="movie-poster" />
-    <article>
-      <h3 class="heading">{{movie.Title}}</h3>
-      <p class="medium-text">Released on {{movie.Released}}</p>
-      <p class="medium-text">Genre : {{movie.Genre}}</p>
-      <p class="medium-text">Director : {{movie.Director}}</p>
-      <p class="medium-text">IMDB Votes : {{movie.imdbVotes}}</p>
-      <p class="medium-text">Ratings :</p>
-      <p class="medium-text">IMDB - {{movie.imdbRating}}</p>
-      <p class="medium-text">
-        {{movie.Ratings[0].Source}} - {{movie.Ratings[0].Value}}
+  <article class="outer-box" role="article">
+    <figure>
+      <img loading="lazy" [src]="movie.Poster" [alt]="movie.Title" />
+    </figure>
+    <div>
+      <h3 class="heading" tabindex="0">{{ movie.Title }}</h3>
+      <p class="medium-text" tabindex="0">Released on {{ movie.Released }}</p>
+      <p class="medium-text" tabindex="0">Genre: {{ movie.Genre }}</p>
+      <p class="medium-text" tabindex="0">Director: {{ movie.Director }}</p>
+      <p class="medium-text" tabindex="0">IMDB Votes: {{ movie.imdbVotes }}</p>
+      <h4 class="medium-text">Ratings:</h4>
+
+      <ul>
+        <li class="medium-text" tabindex="0">IMDB - {{ movie.imdbRating }}</li>
+        <li class="medium-text" tabindex="0">
+          {{ movie.Ratings[0].Source }} - {{ movie.Ratings[0].Value }}
+        </li>
+      </ul>
+      <p class="medium-text" style="margin-top: 2rem" tabindex="0">
+        {{ movie.Plot }}
       </p>
-      <p class="medium-text" style="margin-top: 2rem">{{movie.Plot}}</p>
-    </article>
-  </section>
+    </div>
+  </article>
 </wrapper>
