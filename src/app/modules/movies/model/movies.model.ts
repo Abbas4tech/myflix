@@ -47,3 +47,25 @@ export interface Movie {
   Website: string;
   Response: string;
 }
+
+export const basicSearchKeywords = [
+  'breaking',
+  'heaven',
+  'good',
+  'slow',
+  'love',
+  'fast',
+  'drug',
+  'hate',
+  'hotel',
+  'kiss',
+  'money',
+  'fame',
+  'friends',
+  'hell',
+  'dead',
+];
+
+export const randomNumberGenerator = () => {
+  return Math.round(Math.random() * 100);
+};

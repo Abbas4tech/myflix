@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { BaseMovieCard } from '../../model/movies.model';
-import { ResolveEnd, ResolveStart, Router } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationStart,
+  ResolveEnd,
+  ResolveStart,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'movies-screen',
@@ -20,10 +26,10 @@ export class MoviesIndexScreen {
       error: (err) => console.error(err),
     });
     this._router.events.subscribe((e) => {
-      if (e instanceof ResolveStart) {
+      if (e instanceof NavigationStart || e instanceof ResolveStart) {
         this.loading = true;
       }
-      if (e instanceof ResolveEnd) {
+      if (e instanceof NavigationEnd || e instanceof ResolveEnd) {
         this.loading = false;
       }
     });
